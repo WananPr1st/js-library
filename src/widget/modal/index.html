@@ -1,0 +1,25 @@
+<div id="<%=id%>" class="modal fade">
+    <div class="modal-dialog<%if (size==='lg'){%> modal-large<% } %><%if (size==='video'){%> modal-video<% } %>">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="javascript:void(0);" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title">
+                    <%=title%>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <%=content%>
+            </div>
+            <% if (type === 'alert') { %>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+            <% } else if(type === 'confirm'){ %>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-callback="ok">确定</button>
+                <button class="btn btn-default" data-dismiss="modal" data-callback="cancle">取消</button>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>

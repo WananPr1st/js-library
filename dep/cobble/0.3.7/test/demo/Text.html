@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+
+    <style>
+        .placeholder-wrapper {
+            display: inline-block;
+            font-size: 13px;
+            vertical-align: top;
+        }
+        .placeholder-wrapper div {
+            position: absolute;
+            color: #BBB;
+            cursor: text;
+
+            padding: 6px 10px;
+        }
+        .placeholder-active {
+            color: #BBB;
+        }
+        input {
+            border: 1px solid #CCC;
+
+            margin: 0;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" placeholder="请输入文本" />
+
+    <textarea placeholder="请输入文本"></textarea>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/esl.js"></script>
+    <script src="./js/config.js"></script>
+    <script>
+
+        require(
+
+            [ 'cobble/Form/Text' ],
+
+            function (Text) {
+
+                Text.defaultOptions.template = '<div class="placeholder-wrapper">'
+                                            +    '<div></div>'
+                                            + '</div>';
+
+                Text.defaultOptions.placeholderSelector = 'div';
+
+                new Text({
+                    element: $(':text'),
+                    onChange: function () {
+                        console.log(this.element.val());
+                    }
+                });
+
+                new Text({
+                    element: $('textarea'),
+                    onChange: function () {
+                        console.log(this.element.val());
+                    }
+                });
+
+            }
+        );
+    </script>
+</body>
+</html>

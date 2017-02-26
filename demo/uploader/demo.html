@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<!-- 需要在webserver中设置接口 /common/upload.json -->
+    <head>
+        <meta charset="UTF-8" />
+        <title>uploader Demo</title>
+        <script src="../../dep/jquery/dist/jquery.js"></script>
+        <script src="../../dep/angular/angular.js"></script>
+        <script src="../../dep/requirejs/require.js"></script>
+        <style>
+            h2 {
+                margin-top: 50px;
+            }
+        </style>
+        <link rel="stylesheet" href="../../src/ngDirective/uploader/style.css">
+    </head>
+    <body>
+        <h2>单文件</h2>
+        <div uploader event-handler="eventHandler" path="{{path}}"></div>
+
+        <h2>多文件</h2>
+        <div uploader multiple="true" event-handler="eventHandler"
+            path="{{path}}"></div>
+
+        <h2>文件大小验证(5k)</h2>
+        <div uploader event-handler="eventHandler" path="{{path}}" size="5120"></div>
+
+        <h2>文件类型验证(jpg, mimeType)</h2>
+        <div uploader accept="accept" event-handler="eventHandler"
+            path="{{path}}"></div>
+
+        <h2>文件类型验证(jpg)</h2>
+        <div uploader accept="accept" event-handler="eventHandler"
+            path="{{path}}" mime-type="false"></div>
+
+        <h2>拖拽上传</h2>
+        <div uploader event-handler="eventHandler"
+            path="{{path}}" draggable="true" multiple="true"
+            style="width:500px;height:200px;border:1px solid gray;"></div>
+    </body>
+    <script type="text/javascript">
+
+        require.config({
+            baseUrl: '../../src'
+        });
+
+
+        require(
+            [
+                'ngDirective/uploader/uploader'
+            ],
+            function () {
+                angular.module('test', [
+                    'library.directives'
+                ])
+                .run(['$rootScope', function ($rootScope) {
+                    $rootScope.accept = ['jpg'];
+                    $rootScope.path = '/common/upload.json';
+                    $rootScope.eventHandler = {
+                        error: function (data) {
+                            alert(data.msg);
+                        },
+                        uploadstart: function (data) {
+                            var temp =[];
+
+                            $.each(data.files, function (index, item) {
+                                temp.push(item.name);
+                            }) ;
+                            console.log('上传开始：' + temp.join('、'));
+                        },
+                        uploadcomplete: function (data) {
+                            console.log(data.file.name + '上传完成', data)
+                        },
+                        uploadprogress: function (data) {
+                            console.log(data.file.name + '上传进度:' + data.loaded + '/' + data.total);
+                        },
+                        uploadsuccess: function (data) {
+                            console.log('所有文件上传完成', data);
+                        },
+
+
+                        dragenter: function () {
+                            console.log('dragenter')
+                        },
+                        dragleave: function () {
+                            console.log('dragleave');
+                        },
+                        dragover: function () {
+                            console.log('dragover');
+                        },
+                        drop: function () {
+                            console.log('drop');
+                        }
+                    }
+                }]);
+
+                angular.bootstrap(document, ['test']);
+            }
+        )
+    </script>
+</html>

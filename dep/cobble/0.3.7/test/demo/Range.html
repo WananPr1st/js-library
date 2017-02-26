@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+
+    <style>
+        .slider-track {
+            background: red;
+            position: relative;
+            width: 200px;
+            height: 10px;
+        }
+        .slider-thumb {
+            background: #BBB;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            width: 5px;
+            height: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <input type="range" min="10" max="20" step="0.5" />
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/esl.js"></script>
+    <script src="./js/config.js"></script>
+    <script>
+
+        require(
+
+            [ 'cobble/Form/Range' ],
+
+            function (Range) {
+
+                Range.defaultOptions.template = '<div class="slider-track">'
+                                              +     '<i class="slider-thumb"></i>'
+                                              + '</div>';
+
+                Range.defaultOptions.thumbSelector = '.slider-thumb';
+
+                new Range({
+                    element: $('input'),
+                    onChange: function () {
+                        console.log(this.element.val());
+                    }
+                });
+
+            }
+        );
+    </script>
+</body>
+</html>

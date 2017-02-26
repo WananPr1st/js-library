@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>viewSlideIn - ngAnimation Demo</title>
+        <script src="../../dep/jquery/dist/jquery.js"></script>
+        <script src="../../dep/angular/angular.js"></script>
+        <script src="../../dep/angular-animate/angular-animate.js"></script>
+        <script src="../../dep/angular-route/angular-route.js"></script>
+        <script src="../../dep/requirejs/require.js"></script>
+    </head>
+    <body>
+        <div ng-view class="view-slide-in"></div>
+        <a href="#/t2">test</a>
+    </body>
+    <script type="text/javascript">
+
+        require.config({
+            baseUrl: '../../src'
+        });
+
+        require(
+            [
+                'ngAnimation/module',
+            ],
+            function () {
+                require(
+                    [
+                        'ngAnimation/viewSlideIn'
+                    ], 
+                    function () {
+                        angular.module('test', [
+                            'ngRoute',
+                            'library.animation'
+                        ])
+                        .config(['$routeProvider', function($routeProvider) {
+                            $routeProvider
+                                .when('/t1', {
+                                    template: 'this is my slide view animation test<br/>12<br/>12<br/>12'
+                                })
+                                .when('/t2', {
+                                    template: 'this is my slide view animation test url<br/>12<br/>12<br/>12<br/>12<br/>12<br/>12'
+                                })
+                                .otherwise({
+                                    redirectTo: '/t1'
+                                });
+                            }
+                        ]);
+
+                        angular.bootstrap(document, ['test']);
+                    }
+                )
+            }
+        );
+    </script>
+</html>

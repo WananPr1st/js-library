@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rater</title>
+    <style>
+        .on {
+            background: url(http://vs-static.baidu.com/edu/newjuhe/asset/img/icon.png) no-repeat 0 -50px;
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+        }
+        .off {
+            background: url(http://vs-static.baidu.com/edu/newjuhe/asset/img/icon.png) no-repeat 0 -62px;
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+        }
+        .half {
+            background: url(http://vs-static.baidu.com/edu/newjuhe/asset/img/icon.png) no-repeat 0 -166px;
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main"></div>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/esl.js"></script>
+    <script src="./js/config.js"></script>
+    <script>
+
+        require(
+
+            [ 'cobble/ui/Rater' ],
+
+            function (Rater) {
+
+                var rater = new Rater({
+                    element: $('#main'),
+                    value: 3.5,
+                    count: 6,
+                    min: 2,
+                    max: 4,
+
+                    onClass: 'on',
+                    offClass: 'off',
+                    halfClass: 'half',
+
+                    half: true,
+                    onChange: function (data) {
+                        console.log(data);
+                    }
+                });
+
+            }
+        );
+    </script>
+</body>
+</html>

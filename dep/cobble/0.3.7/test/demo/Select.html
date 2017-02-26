@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div id="select1" class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Action <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#" class="active" data-value="1">Action</a></li>
+            <li><a href="#" data-value="2">Another action</a></li>
+            <li><a href="#" data-value="3">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#" data-value="4">Separated link</a></li>
+        </ul>
+    </div>
+
+    <div id="select2" class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Action <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#" class="active" data-value="1">Action</a></li>
+            <li><a href="#" data-value="2">Another action</a></li>
+            <li><a href="#" data-value="3">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#" data-value="4">Separated link</a></li>
+        </ul>
+    </div>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/esl.js"></script>
+    <script src="./js/config.js"></script>
+    <script>
+
+        require(
+
+            [
+                'cobble/Form/Select',
+                'cobble/ui/ComboBox'
+            ],
+
+            function (Select, ComboBox) {
+
+                var defaultOptions = Select.defaultOptions;
+                defaultOptions.buttonSelector = 'button';
+                defaultOptions.menuSelector = 'ul';
+                defaultOptions.activeClass = 'active';
+                defaultOptions.openClass = 'open';
+                defaultOptions.setText = function (text) {
+                    var contents = this.element.find(this.buttonSelector).contents();
+                    contents[0].nodeValue = text;
+                };
+
+                var select1 = new Select({
+                    element: $('#select1'),
+                    name: 'name',
+                    onChange: function () {
+                        //console.log(this.getValue());
+                    }
+                });
+
+                var select2 = new ComboBox({
+                    element: $('#select2'),
+                    button: $('#select2 button'),
+                    menu: $('#select2 ul'),
+                    value: '3',
+                    onChange: function () {
+                        console.log(this.getValue());
+                    }
+                });
+
+            }
+        );
+    </script>
+</body>
+</html>

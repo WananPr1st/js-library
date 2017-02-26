@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dialog</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+    <style>
+        html,
+        body {
+            height: 2000px;
+        }
+        #trigger {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .modal {
+            background-color: lightblue;
+            background-color: rgba(0,0,0,.5);
+        }
+    </style>
+</head>
+<body>
+
+    <button id="trigger">click</button>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/esl.js"></script>
+    <script src="./js/config.js"></script>
+    <script>
+
+        require(
+
+            [ 'cobble/ui/Dialog' ],
+
+            function (Dialog) {
+
+                $('button').click(function () {
+                    if (dialog.hidden) {
+                        dialog.show();
+                    }
+                    else {
+                        dialog.hide();
+                    }
+                });
+
+                var dialog = new Dialog({
+
+                    title: '标题',
+                    content: '内容',
+                    hidden: false,
+                    modal: true,
+                    disposeOnHide: false,
+                    hideOnClickMask: true,
+                    fixed: false,
+                    scrollable: true,
+                    x: '20%',
+
+                    headerSelector: '.modal-header',
+                    titleSelector: '.modal-title',
+                    bodySelector: '.modal-body',
+                    closeSelector: '.close',
+
+                    maskTemplate: '<div class="modal"></div>',
+
+                    template: '<div class="modal-dialog">'
+                            +     '<div class="modal-content">'
+                            +         '<div class="modal-header">'
+                            +             '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'
+                            +             '<h4 class="modal-title">Modal title</h4>'
+                            +         '</div>'
+                            +         '<div class="modal-body">'
+                            +             '<p>One fine body&hellip;</p>'
+                            +         '</div>'
+                            +         '<div class="modal-footer">'
+                            +             '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'
+                            +             '<button type="button" class="btn btn-primary">Save changes</button>'
+                            +         '</div>'
+                            +     '</div>'
+                            + '</div>',
+
+                    showAnimation: function () {
+                        this.element.fadeIn(400);
+                    },
+                    hideAnimation: function () {
+                        this.element.fadeOut(400);
+                    },
+                    resizeAnimation: function (style) {
+                        this.element.animate(style, 100);
+                    },
+                    showMaskAnimation: function () {
+                        this.mask.slideDown(1000);
+                    },
+                    hideMaskAnimation: function () {
+                        this.mask.slideUp(1000);
+                    }
+                });
+
+console.log(dialog)
+
+            }
+        );
+    </script>
+</body>
+</html>

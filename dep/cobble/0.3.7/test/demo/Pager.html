@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pager</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+</head>
+<body>
+
+    <ul id="pager" class="pagination">
+
+    </ul>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/esl.js"></script>
+    <script src="./js/config.js"></script>
+    <script>
+
+        require(
+
+            [
+                'cobble/ui/Pager',
+                'cobble/util/etpl'
+            ],
+
+            function (Pager, etpl) {
+
+                var pager = new Pager({
+
+                    element: $('#pager'),
+                    page: 4,
+                    count: 10,
+
+                    showCount: 5,
+                    startCount: 2,
+                    endCount: 3,
+
+                    autoHide: true,
+                    pageAttr: 'data-page',
+
+                    // 如果想用 ajax 处理翻页，必须写上 pageAttr 属性
+                    // 如果采取跳转的方式，则自行改写模板的 href 为跳转 url
+                    pageTemplate: '<li><a href="#" data-page="${page}">${page}</a></li>',
+
+                    prevTemplate: '<li><a href="#">«</a></li>',
+                    nextTemplate: '<li><a href="#">»</a></li>',
+                    ellipsisTemplate: '<li class="disabled"><a>...</a></li>',
+                    activeTemplate: '<li class="active"><a href="#">${page} <span class="sr-only">(current)</span></a></li>',
+
+                    renderTemplate: function (tpl, data) {
+                        return etpl.compile(tpl)(data);
+                    },
+
+                    onChange: function (data) {
+                        console.log(data);
+                    }
+                });
+
+            }
+        );
+    </script>
+</body>
+</html>

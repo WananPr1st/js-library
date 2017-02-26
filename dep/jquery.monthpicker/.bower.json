@@ -1,0 +1,14 @@
+{
+  "name": "jquery.ui.montjquery.ui.monthpicker",
+  "homepage": "https://github.com/thebrowser/jquery.ui.monthpicker",
+  "_release": "3100a96952",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "3100a96952764a160983f6a24918d878f0a20955"
+  },
+  "_source": "git://github.com/thebrowser/jquery.ui.monthpicker.git",
+  "_target": "*",
+  "_originalSource": "jquery.ui.montjquery.ui.monthpicker",
+  "_direct": true
+}

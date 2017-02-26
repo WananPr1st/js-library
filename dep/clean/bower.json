@@ -1,0 +1,20 @@
+{
+  "name": "clean",
+  "version": "0.2.0",
+  "authors": [
+    "David White <david@spry-soft.com>"
+  ],
+  "description": "CSS typography / basic element framework",
+  "main": "dist/clean.css",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "~3.0.1"
+  }
+}

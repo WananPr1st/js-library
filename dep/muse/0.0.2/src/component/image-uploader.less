@@ -1,0 +1,58 @@
+/**
+ * @file 图片上传工具+认证图片展示
+ * @author zhujialu
+ */
+.image-uploader {
+
+    @progress-height: 24px;
+    @image-width: 150px;
+    @image-height: 150px;
+
+    .image-preview {
+        background-color: #EEE;
+        position: relative;
+        width: @image-width;
+        height: @image-height;
+    }
+
+    .image-browse {
+        color: #FFF;
+        cursor: pointer;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: @progress-height;
+        line-height: @progress-height;
+    }
+
+    img   {
+        width: @image-width;
+        height: @image-height;
+    }
+
+    strong {
+        position: relative;
+        z-index: 1;
+    }
+
+    .progress {
+        .opacity(0.5);
+        background-color: #000;
+
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        width: 100%;
+        height: 100%;
+    }
+    .progress-bar {
+        background-color: @brand-success;
+        display: block;
+        height: 100%;
+        width: 0;
+    }
+}
+

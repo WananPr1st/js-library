@@ -1,0 +1,28 @@
+td, th {
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0.5rem;
+  font-size: @base-font-size-px;
+  font-size: @base-font-size-rem;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  &>tbody>tr>td,
+  &>thead>tr>th {
+    padding: 1rem;
+    line-height: 1.4;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #ddd;
+  }
+
+  &>thead>tr>th {
+    background-color: #f4f4f4;
+  }
+}

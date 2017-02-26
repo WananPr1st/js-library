@@ -1,0 +1,27 @@
+<div class="form-group">
+    <label class="control-label">
+         省:
+    </label>
+    <select ng-model="query.province" class="form-control" style="width:70px"
+            ng-options="m.id as m.name for m in provinces">
+        <option value="">全部</option>
+    </select>
+</div>
+<div class="form-group">
+    <label class="control-label">
+         市:
+    </label>
+    <select style="width:70px" ng-model="query.city" class="form-control"
+            ng-options="m.id as m.name for m in citys">
+        <option value="">全部</option>
+    </select>
+</div>
+<div class="form-group" ng-show="showCounty">
+    <label class="control-label">
+         区:
+    </label>
+    <select style="width:70px" ng-model="query.county" class="form-control"
+            ng-options="m.id as m.name for m in countys">
+        <option value="">全部</option>
+    </select>
+</div>

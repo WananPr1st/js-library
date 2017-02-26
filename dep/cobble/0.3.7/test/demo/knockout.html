@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <form>
+
+        <div>
+            <label>用户名</label>
+            <input type="text" name="username" placeholder="请输入用户名" required />
+        </div>
+        <div>
+            <label>年龄</label>
+            <input type="number" name="age" required min="1" max="80" />
+        </div>
+        <div>
+            <label>等级</label>
+            <input type="range" name="level" required min="3" max="12" />
+        </div>
+        <div>
+            <label>爱好</label>
+            <div class="form-select">
+                <b>
+                    请选择爱好
+                    <i class="caret"></i>
+                </b>
+                <ul>
+                    <li data-value="1">文学</li>
+                    <li data-value="2">艺术</li>
+                    <li data-value="3">体育</li>
+                </ul>
+            </div>
+        </div>
+        <div class="radio">
+            <label>性别</label>
+            <label>
+                <input type="radio" name="sex" value="1" /> 男
+            </label>
+            <label>
+                <input type="radio" name="sex" value="0" />女
+            </label>
+        </div>
+        <div>
+            <label>爱好</label>
+            <label>
+                <input type="checkbox" name="hobby" value="0" /> 文学
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="1" /> 文学
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="2" /> 文学
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="3" /> 文学
+            </label>
+        </div>
+    </form>
+
+    <script src="./js/jquery.js"></script>
+    <script src="http://apps.bdimg.com/libs/knockout.js/3.1.0/knockout.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/require.js/2.1.11/require.min.js"></script>
+    <script src="./js/config.js"></script>
+
+    <script>
+
+        require(
+
+            [
+                'cobble/form/Checkbox',
+                'cobble/form/RadioGroup',
+                'cobble/form/File',
+                'cobble/form/Number',
+                'cobble/form/Range',
+                'cobble/form/Select',
+                'cobble/form/Text',
+                'cobble/form/Validator',
+            ],
+
+            function (Checkbox, RadioGroup, File, Number, Range, Select, Text, Validator) {
+
+                Checkbox.defaultOptions = {
+                    template: '<i class="icon-checkbox"></i>',
+                    checkedClass: 'checkbox-checked',
+                    disabledClass: 'checkbox-disabled'
+                };
+
+                RadioGroup.defaultOptions = {
+                    template: '<i class="icon-radio"></i>',
+                    checkedClass: 'radio-checked',
+                    disabledClass: 'radio-disabled'
+                };
+
+                Text.defaultOptions = {
+                    template: '<div class="input-text">'
+                            +     '<div></div>'
+                            + '</div>',
+                    placeholderSelector: 'div'
+                };
+
+                Number.defaultOptions = {
+                    template: '<div class="input-number">'
+                            +     '<input type="text" />'
+                            +     '<i class="increase"></i>'
+                            +     '<i class="decrease"></i>'
+                            + '</div>',
+                    upSelector: '.increase',
+                    downSelector: '.decrease'
+                };
+
+                Range.defaultOptions = {
+                    template: '<div class="input-range">'
+                          +     '<i class="thumb"></i>'
+                          + '</div>',
+                    thumbSelector: '.thumb'
+                };
+
+                Select.defaultOptions = {
+                    buttonSelector: '.btn',
+                    menuSelector: '.menu',
+                    activeClass: 'active',
+                    openClass: 'open',
+                    setText: function (text) {
+
+                    }
+                };
+
+                Checkbox.init($(':checkbox'));
+                RadioGroup.init($('.radio'));
+                Text.init($(':text'));
+                Number.init($('[type="number"]'));
+                Range.init($('[type="range"]'));
+            }
+        );
+
+    </script>
+</body>
+</html>

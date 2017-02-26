@@ -1,0 +1,43 @@
+/**
+ * @file 文字消息
+ * @author wangyujie
+ */
+
+.message {
+
+    display: block;
+    font-size: @font-size-tiny;
+    padding: @gap-horizontal-medium
+             @gap-horizontal-huge;
+    padding-left: 40px;
+    position: relative;
+
+    i {
+        font-size: @font-size-medium;
+        margin-right: @gap-horizontal-small;
+        vertical-align: text-top;
+        position: absolute;
+        left: 14px;
+        top: 14px;
+    }
+}
+
+.message-info {
+
+    background-color: #edf3ff;
+    color: #6d6d6d;
+
+    i {
+        color: #6990e5;
+    }
+}
+
+.message-success {
+    background-color: #f1fceb;
+    color: #73cf40;
+}
+
+.message-error {
+    background-color: #fff1f1;
+    color: #f9561f;
+}

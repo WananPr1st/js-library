@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>parseRmb - ngFilter Demo</title>
+        <script src="../../dep/jquery/dist/jquery.js"></script>
+        <script src="../../dep/angular/angular.js"></script>
+        <script src="../../dep/angular-route/angular-route.js"></script>
+        <script src="../../dep/requirejs/require.js"></script>
+    </head>
+    <body>
+        <h3>parseRmb测试</h3>
+        <ul>
+            <li>
+                <label>100格式化后：{{ 100 | rmb }}</label>
+            </li>
+            <li>
+                <label>-100格式化后：{{ -100 | rmb }}</label>
+            </li>
+            <li>
+                <label>金额为空：{{ null | rmb }}</label>
+            </li>
+            <li>
+                <label>使用$filter服务调用：{{ rmbValue }}</label>
+            </li>
+            <li>
+                <label>大于0的货币加+号：{{ 100 | rmb:true }}</label>
+            </li>
+        </ul>
+    </body>
+    <script type="text/javascript">
+
+        require.config({
+            baseUrl: '../../src',
+            urlArgs: + new Date()
+        });
+
+        require(
+            [
+                'ngFilter/module',
+            ],
+            function () {
+                require(
+                    [
+                        'ngFilter/parseRmb'
+                    ], 
+                    function () {
+                        angular.module('app', [
+                            'library.filters'
+                        ])
+                        .run(['$rootScope', '$filter', function ($rootScope, $filter) {
+                            $rootScope.rmbValue = $filter('rmb')(100);
+                        }]);
+                        angular.bootstrap(document, ['app']);
+                    }
+                )
+            }
+        );
+    </script>
+</html>

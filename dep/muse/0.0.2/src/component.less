@@ -1,0 +1,30 @@
+// @import './component/button.less';
+@import './component/dialog.less';
+// 和bootstrap样式冲突
+// @import './component/dropdown.less';
+@import './component/form.less';
+@import './component/label.less';
+@import './component/pager.less';
+@import './component/tab.less';
+@import './component/table.less';
+@import './component/text.less';
+@import './component/tooltip.less';
+@import './component/message.less';
+@import './component/badge.less';
+@import './component/image-uploader.less';
+
+.image-browse,
+.btn {
+    position: relative;
+    object,
+    input[type="file"] {
+        .opacity(0);
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+}

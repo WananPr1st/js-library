@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zoom</title>
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+}
+        .scale-image {
+
+            margin-left: 100px;
+            margin-top: 100px;
+
+            position: relative;
+        }
+
+        .image-finder {
+            background-color: rgba(0,0,0,0.4);
+            position: absolute;
+            width: 40px;
+            height: 40px;
+        }
+
+        img {
+            width: 140px;
+            height: 200px;
+        }
+
+        .raw-image {
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 0;
+            left: 300px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="scale-image">
+    <img src="http://g.hiphotos.baidu.com/image/pic/item/8435e5dde71190ef10c486fbcd1b9d16fdfa60d2.jpg" />
+
+</div>
+<div class="image-finder"></div>
+<div class="raw-image">
+
+</div>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/esl.js"></script>
+<script src="./js/config.js"></script>
+<script>
+
+    require(
+
+        [ 'cobble/ui/Zoom' ],
+
+        function (Zoom) {
+
+            new Zoom({
+                element: $('img'),
+                finder: $('.image-finder'),
+                viewport: $('.raw-image'),
+                url: 'http://g.hiphotos.baidu.com/image/pic/item/8435e5dde71190ef10c486fbcd1b9d16fdfa60d2.jpg'
+            });
+
+        }
+    );
+</script>
+</body>
+</html>

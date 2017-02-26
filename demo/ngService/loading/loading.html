@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ngDirective loading</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../../../src/widget/loading/style.css"/>
+
+        <script src="../../../dep/jquery/dist/jquery.js"></script>
+        <script src="../../../dep/angular/angular.js"></script>
+        <script src="../../../dep/angular-route/angular-route.js"></script>
+        <script src="../../../dep/requirejs/require.js"></script>
+    </head>
+    <body>
+
+        <h3>loading测试</h3>
+        <div style="width:200px;height:200px;border:1px solid #acacac;" class="loading1">
+            <h4>子loading1</h4>
+        </div>
+        <div style="width:200px;height:200px;border:1px solid #acacac;" class="loading2">
+            <h4>子loading2</h4>
+        </div>
+        <div style="width:200px;height:200px;border:1px solid #acacac;" class="loading3">
+            <h4>子loading2</h4>
+        </div>
+<!--         <div ng-controller="Load3ngController">
+        </div> -->
+        <script type="text/javascript">
+
+            require.config({
+                baseUrl: '../../../src',
+                urlArgs: 'v=' + new Date()
+            });
+
+            require(
+                [
+                    'ngService/module',
+                ],
+                function () {
+                    require(
+                        [
+                            'ngService/loadingService/loadingService'
+                        ],
+                        function () {
+                            angular.module('app', [
+                                'library.services'
+                            ])
+                            .run(['loadingService', function (loadingService) {
+                                loadingService.show({
+                                    isShowMask: true
+                                });
+                                var loading1 = loadingService.create({ elem: '.loading1' });
+                                loading1.show();
+                                var loading2 = loadingService.create({
+                                    elem: '.loading2',
+                                    isShowMask: true
+                                });
+                                loading2.show();
+                                var loading3 = loadingService.create({ elem: '.loading3' });
+                                loading3.show();
+                            }]);
+                            angular.bootstrap(document, ['app']);
+                        }
+                    )
+                }
+            );
+    </script>
+
+    </body>
+</html>

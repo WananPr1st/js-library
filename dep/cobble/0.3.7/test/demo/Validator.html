@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+    <style>
+        .icon {
+
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+
+            border: 1px solid #DDD;
+        }
+        .checked .icon {
+            border-color: red;
+            background-color: lightblue;
+        }
+        .disabled .icon {
+            background-color: #EEE;
+        }
+
+    </style>
+</head>
+<body>
+
+    <form>
+
+        <label>
+            <input type="text" name="username" required />
+        </label>
+
+    </form>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/esl.js"></script>
+    <script src="./js/config.js"></script>
+    <script>
+
+        require(
+
+            [ 'cobble/form/Validator' ],
+
+            function (Validator) {
+
+                new Validator({
+                    element: $('form'),
+                    realtime: true,
+                    class4Parent: true,
+                    successClass: 'success',
+                    failClass: 'fail'
+                });
+            }
+        );
+    </script>
+</body>
+</html>
